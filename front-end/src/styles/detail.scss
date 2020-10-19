@@ -1,0 +1,70 @@
+.detail-container {
+    margin: 0px 30px 30px 30px;
+    position: relative;
+}
+.form-input {
+    margin-left: 10px;
+}
+.form-input label {
+    margin-bottom: unset;
+    font-weight: unset;
+    font-size: 14px;
+}
+.el-form--label-top .el-form-item__label {
+    padding: unset;
+}
+
+.hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 8px;
+}
+.resume-item {
+    margin-bottom: 5px;
+}
+
+.el-table__row .el-input .el-input__inner{
+    border-style:none;
+}
+.hover-row .el-input .el-input__inner{
+    border-style:solid;   
+}
+.el-divider {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.el-divider__text {
+    font-size: 13px;
+}
+.fixed {
+    position: fixed;
+    width: 100%;
+    bottom: 10px;
+}
+.el-form-item--mini.el-form-item {
+    margin-bottom: unset;
+}
+.el-upload-dragger {
+    width: 84vw;
+    position: relative;
+    margin-left: 1vw;
+    height: 100px;
+    margin-top: 10px;
+}
+.el-upload-dragger .el-icon-upload {
+    margin: unset;
+    line-height: unset;
+    font-size: 40px;
+}

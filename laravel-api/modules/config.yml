@@ -1,0 +1,4 @@
+imports:
+  - {resource: 'doctrine.yml'}
+  - {resource: 'serializer.yml'}
+  - {resource: 'writable.yml'}

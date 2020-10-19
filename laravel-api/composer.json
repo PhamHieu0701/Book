@@ -1,0 +1,172 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3",
+        "fideloper/proxy": "^4.2",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.0",
+        "laravel/tinker": "^2.0",
+        "ext-json": "*",
+        "chaos/controller": "*",
+        "chaos/middleware": "*",
+        "chaos/account": "*",
+        "chaos/lookup": "*"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.3.6",
+        "fzaninotto/faker": "^1.9.1",
+        "mockery/mockery": "^1.3.1",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3",
+        "chaos/tools": "*",
+        "doctrine/common": "^2.11",
+        "doctrine/mongodb-odm": "2.1.*",
+        "bluemmb/faker-picsum-photos-provider": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/config"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/container"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/doctrine"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/messenger"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/object"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/resolver"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/serializer"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/entity"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/repository"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/service"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/controller"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/middleware"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/account-module"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/lookup-module"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ntd1712/qa-tools"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "m1/vars",
+                "version": "1.1.3-dev",
+                "dist": {
+                    "url": "https://github.com/ntd1712/Vars/archive/1.1.3.zip",
+                    "type": "zip"
+                },
+                "autoload": {
+                    "psr-4": {
+                        "M1\\Vars\\": "src/"
+                    }
+                }
+            }
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "installer-types": ["chaos-module"],
+        "installer-paths": {
+            "modules/core/{$name}/": ["type:chaos-module"]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Chaos\\Modules\\": "modules/app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "migrate": [
+            "vendor/bin/doctrine orm:schema-tool:update --force",
+            "@php artisan db:seed"
+        ],
+        "ca": [
+            "vendor/bin/phpstan analyse -c phpstan.neon --error-format=prettyJson modules app/Http/Controllers/Api > report_phpstan.json || true",
+            "vendor/bin/psalm --no-cache --report=report_psalm.txt modules app/Http/Controllers/Api || true"
+        ],
+        "cf": [
+            "vendor/bin/php-cs-fixer fix --config=.php_cs --verbose -- modules app/Http/Controllers/Api",
+            "vendor/bin/phpcbf --basepath=. modules app/Http/Controllers/Api || true"
+        ],
+        "cs": [
+            "vendor/bin/php-cs-fixer fix --config=.php_cs --diff --dry-run --verbose -- modules app/Http/Controllers/Api > report_php-cs-fixer.txt || true",
+            "vendor/bin/phpcs --basepath=. --report-file=report_phpcs.txt --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 modules app/Http/Controllers/Api"
+        ],
+        "cpd": "vendor/bin/phpcpd --fuzzy --progress modules app/Http/Controllers/Api > report_phpcpd.txt || true",
+        "md": "vendor/bin/phpmd modules,app/Http/Controllers/Api html phpmd.xml --ignore-violations-on-exit > report_phpmd.html",
+        "metrics": "vendor/bin/phpmetrics --report-html=report_phpmetrics.html modules app/Http/Controllers/Api"
+    }
+}
