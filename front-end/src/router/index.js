@@ -98,29 +98,41 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
+  // {
+  //   path: '/manager-applicant',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/table/complex-table'),
+  //       name: 'Manager applicant',
+  //       meta: { title: 'Manager Applicant', icon: 'peoples' }
+  //     },
+  //     {
+  //       path: 'detail',
+  //       component: () => import('@/views/detail/detail'),
+  //       hidden: true,
+  //       name: 'Detail',
+  //       meta: { title: 'Detail', icon: 'peoples' }
+  //     },
+  //     {
+  //       path: 'create',
+  //       component: () => import('@/views/detail/detail'),
+  //       hidden: true,
+  //       name: 'Create',
+  //       meta: { title: 'Create', icon: 'peoples' }
+  //     }
+  //   ]
+  // },
   {
-    path: '/manager-applicant',
+    path: '/books',
     component: Layout,
     children: [
       {
         path: 'index',
-        component: () => import('@/views/table/complex-table'),
-        name: 'Manager applicant',
-        meta: { title: 'Manager Applicant', icon: 'peoples' }
-      },
-      {
-        path: 'detail',
-        component: () => import('@/views/detail/detail'),
-        hidden: true,
-        name: 'Detail',
-        meta: { title: 'Detail', icon: 'peoples' }
-      },
-      {
-        path: 'create',
-        component: () => import('@/views/detail/detail'),
-        hidden: true,
-        name: 'Create',
-        meta: { title: 'Create', icon: 'peoples' }
+        component: () => import('@/views/book/list'),
+        name: 'List Book',
+        meta: { title: 'List Book', icon: 'list' }
       }
     ]
   },
