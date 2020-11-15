@@ -41,3 +41,4 @@
 /front-end/package-lock.json
 /front-end/yarn.lock
 
+/express-api/node_modules
